@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Morrow — независимая digital-студия. Стратегия, дизайн и разработка цифровых продуктов." />
+  <meta name="theme-color" content="#e9ff62" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <title>Morrow — digital products studio</title>
+</head>
+<body>
+  <div class="cursor-dot"></div>
+  <header class="header">
+    <a class="logo" href="#top">MORROW<span>®</span></a>
+    <nav><a href="#work">Работы</a><a href="#services">Услуги</a><a href="#about">О студии</a></nav>
+    <a class="contact-link" href="#contact">Обсудить проект <span>↗</span></a>
+    <button class="menu-button" aria-label="Открыть меню"><span></span><span></span></button>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-meta"><span>Стратегия / Дизайн / Разработка</span><span>Москва · Работаем по всему миру</span></div>
+      <h1><span>Создаём digital</span><span>продукты, которые</span><span class="outline">двигают бизнес.</span></h1>
+      <div class="hero-bottom"><p>Помогаем компаниям находить свой голос,<br />создавать сильные бренды и удобные сервисы.</p><a href="#work" class="circle-link"><i>↓</i><span>Смотреть<br />проекты</span></a></div>
+      <div class="ticker"><div><span>PRODUCT DESIGN</span><i>✦</i><span>DEVELOPMENT</span><i>✦</i><span>BRAND SYSTEMS</span><i>✦</i><span>PRODUCT DESIGN</span><i>✦</i><span>DEVELOPMENT</span><i>✦</i><span>BRAND SYSTEMS</span><i>✦</i></div></div>
+    </section>
+
+    <section class="work" id="work">
+      <header class="section-heading"><div><span class="index">01</span><h2>Избранные<br />проекты</h2></div><p>От идеи до запуска — соединяем продуктовый подход, выразительный дизайн и аккуратную разработку.</p></header>
+      <div class="filters" role="group" aria-label="Фильтр проектов"><button class="active" data-filter="all">Все <sup>04</sup></button><button data-filter="product">Продукты <sup>02</sup></button><button data-filter="brand">Брендинг <sup>01</sup></button><button data-filter="web">Сайты <sup>01</sup></button></div>
+      <div class="project-grid">
+        <article class="project project-wide" data-category="product"><a href="#case-nova"><div class="project-visual nova"><div class="nova-copy"><span>NOVA/</span><strong>Деньги.<br />Только проще.</strong><small>Мобильный банк нового поколения</small></div><div class="phone"><div class="phone-bar"><i></i><span>9:41</span></div><p>Добрый день, Алексей</p><strong>286 400 ₽</strong><div class="chart"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="bank-row"><i></i><span><b>Продукты</b><small>4 счёта</small></span><em>→</em></div><div class="bank-row"><i></i><span><b>Переводы</b><small>По номеру телефона</small></span><em>→</em></div></div></div><div class="project-caption"><div><span>01 / Product</span><h3>Nova Bank</h3></div><p>Стратегия, айдентика и мобильное приложение для цифрового банка.</p><i>↗</i></div></a></article>
+        <article class="project" data-category="brand"><a href="#case-flora"><div class="project-visual flora"><span class="flora-logo">flora<sup>®</sup></span><div class="bottle"><i>F</i><span>daily<br />balance</span><small>30 CAPSULES</small></div><div class="flora-note">your routine,<br /><em>naturally.</em></div><span class="leaf one"></span><span class="leaf two"></span></div><div class="project-caption"><div><span>02 / Brand</span><h3>Flora Lab</h3></div><p>Бренд-система для линейки daily wellness.</p><i>↗</i></div></a></article>
+        <article class="project" data-category="web"><a href="#case-arka"><div class="project-visual arka"><div class="arka-top"><span>ARKA</span><span>ARCHITECTURE & INTERIORS</span></div><strong>Spaces<br />with intent.</strong><div class="building"><i></i><i></i><i></i><i></i><i></i></div><small>Residential / Cultural / Workspace</small></div><div class="project-caption"><div><span>03 / Web</span><h3>Arka Bureau</h3></div><p>Сайт архитектурного бюро с фокусом на проектах.</p><i>↗</i></div></a></article>
+        <article class="project project-wide" data-category="product"><a href="#case-locus"><div class="project-visual locus"><div class="locus-nav"><strong>locus</strong><span>Explore&nbsp;&nbsp; Saved&nbsp;&nbsp; Trips</span><i>RS</i></div><div class="locus-copy"><small>STAY SOMEWHERE<br />WORTH REMEMBERING</small><strong>Find your<br />place in the wild.</strong><button>Explore stays →</button></div><div class="cabin"><span class="roof"></span><span class="wall"><i></i><i></i></span><span class="trees">♠ ♠ ♠</span></div></div><div class="project-caption"><div><span>04 / Product</span><h3>Locus Stay</h3></div><p>Сервис бронирования небольших домов вдали от города.</p><i>↗</i></div></a></article>
+      </div>
+    </section>
+
+    <section class="services" id="services">
+      <header class="section-heading light"><div><span class="index">02</span><h2>Что мы<br />делаем</h2></div><p>Не продаём часы и экраны. Погружаемся в задачу, собираем команду и отвечаем за конечный результат.</p></header>
+      <div class="service-list">
+        <article><span>01</span><h3>Исследование<br />и стратегия</h3><p>Погружаемся в продукт, рынок и аудиторию. Формулируем гипотезы и собираем понятный план действий.</p><div><i>Аудит</i><i>Интервью</i><i>Продуктовая стратегия</i></div></article>
+        <article><span>02</span><h3>Брендинг<br />и коммуникация</h3><p>Создаём характер бренда и систему, которая остаётся узнаваемой во всех точках контакта.</p><div><i>Платформа</i><i>Айдентика</i><i>Гайдлайны</i></div></article>
+        <article><span>03</span><h3>Продуктовый<br />дизайн</h3><p>Проектируем понятные интерфейсы, тестируем сценарии и собираем масштабируемую дизайн-систему.</p><div><i>UX/UI</i><i>Прототипы</i><i>Design system</i></div></article>
+        <article><span>04</span><h3>Web<br />разработка</h3><p>Разрабатываем быстрые сайты и сервисы, настраиваем интеграции и помогаем команде после запуска.</p><div><i>Frontend</i><i>Backend</i><i>Поддержка</i></div></article>
+      </div>
+    </section>
+
+    <section class="about" id="about">
+      <div class="about-number"><strong>8</strong><span>лет создаём<br />цифровые продукты</span></div>
+      <div class="about-copy"><p class="eyebrow">Небольшая команда — большой фокус</p><h2>Мы верим, что лучший результат появляется там, где нет стен между стратегией, дизайном и кодом.</h2><div><p>В Morrow работают дизайнеры и разработчики, которые умеют смотреть на задачу целиком. Мы не прячемся за процессами, разговариваем прямо и показываем работу на каждом этапе.</p><p>Берём ограниченное число проектов одновременно, поэтому остаёмся вовлечёнными от первой встречи до запуска.</p></div></div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div><p class="eyebrow">Есть задача?</p><h2>Давайте сделаем<br />что-то <em>значимое.</em></h2><a href="mailto:hello@morrow.studio">hello@morrow.studio ↗</a></div>
+      <form id="contact-form"><label>Как вас зовут?<input name="name" required placeholder="Имя" /></label><label>Рабочая почта<input name="email" type="email" required placeholder="name@company.ru" /></label><label>Расскажите о задаче<textarea name="message" required rows="3" placeholder="Пара слов о продукте, сроках и ожиданиях"></textarea></label><button type="submit">Отправить заявку <span>↗</span></button><p class="form-status" role="status"></p></form>
+    </section>
+  </main>
+  <footer><a class="logo" href="#top">MORROW<span>®</span></a><div><span>Telegram</span><span>Behance</span><span>LinkedIn</span></div><small>© 2026 Morrow Studio</small></footer>
+  <script src="script.js"></script>
+</body>
+</html>
+
