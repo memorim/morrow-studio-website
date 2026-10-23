@@ -17,7 +17,7 @@ const status = form.querySelector('.form-status');
 form.addEventListener('submit', (event) => {
   event.preventDefault();
   const name = new FormData(form).get('name').trim();
-  status.textContent = `Спасибо, ${name}. Мы ответим в течение рабочего дня.`;
+  status.textContent = `Спасибо, ${name}. Это демонстрационная форма: данные не отправлены.`;
   form.reset();
 });
 
