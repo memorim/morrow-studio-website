@@ -1,43 +1,32 @@
-# Morrow Studio — сайт digital-студии
+# Morrow Studio — Agency Website
 
-Адаптивный сайт digital-студии с портфолио, описанием услуг и формой обращения.
+Responsive studio presentation with project filters, navigation and a client-validated contact form.
 
-**Проект:** Самостоятельная разработка.
+[Open gallery](https://memorim.github.io/morrow-studio-website/)
 
-![CI](https://github.com/memorim/morrow-studio-website/actions/workflows/ci.yml/badge.svg)
+![Desktop composition](docs/desktop.png)
 
-[Открыть сайт-демонстрацию](https://memorim.github.io/morrow-studio-website/)
+<img src="docs/mobile.png" width="320" alt="Mobile composition">
 
-![Компьютерная версия](docs/desktop.png)
+## Implementation
 
-<img src="docs/mobile.png" width="320" alt="Мобильная версия">
+HTML, CSS and browser JavaScript; no build framework. The gallery can be served directly; no application build or secret configuration is needed. Desktop and mobile compositions are separate assets.
 
-[Короткая демонстрация сценария](docs/demo.gif)
-
-## Что работает
-- Адаптивная сетка, CSS-композиции кейсов и фильтр проектов.
-- Состояния наведения, плавная навигация и клиентская форма.
-
-## Стек
-HTML, CSS, JavaScript.
-
-## Запуск и проверка
-Python 3.12.14 для локального HTTP-сервера; сборка не нужна.
+## Local setup and checks
 
 ```bash
 node --check script.js
 python tests/check_assets.py
-python -m http.server 8080
+python .github/scripts/check_docs.py
+python -m http.server 8080 --bind 127.0.0.1
 ```
 
-## Технические решения
-- Сайт работает без сборки и UI-фреймворка.
-- Форма проверяет обязательные поля и показывает результат локальной проверки.
+Use Python 3.12.14, matching CI. Open `http://localhost:8080`. CI checks asset references and documentation; it does not certify interactive behavior inside images.
 
-## Подробности
-[API, конфигурация и исходные инструкции](docs/TECHNICAL.md).
+## Scope and limits
 
-[Результаты проверки этой версии](docs/VERIFICATION.md).
+The contact form validates locally; it does not send email or create a server enquiry. No backend or analytics is implied.
 
-## Проверки и обновления
-CI проверяет проект и ссылки на локальные материалы. Dependabot предлагает обновления зависимостей и Actions. [История изменений](CHANGELOG.md).
+No database, migrations or API are required for this static scope. Forms or integrations would be a separate implementation task.
+
+[Technical details](docs/TECHNICAL.md) · [Recorded checks](docs/VERIFICATION.md) · [Change history](CHANGELOG.md)
