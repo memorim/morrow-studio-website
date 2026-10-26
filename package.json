@@ -1,0 +1,1 @@
+{"name":"morrow-studio-website","version":"1.0.0","private":true,"type":"module","scripts":{"test:e2e":"playwright test"},"devDependencies":{"@playwright/test":"1.64.1"},"packageManager":"pnpm@11.7.0","engines":{"node":">=24.18.0 <25","pnpm":"11.7.0"}}

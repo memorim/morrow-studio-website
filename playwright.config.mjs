@@ -1,0 +1,2 @@
+import {defineConfig} from '@playwright/test';
+export default defineConfig({testDir:'tests/browser',workers:1,use:{baseURL:'http://127.0.0.1:4832',trace:'retain-on-failure'},projects:[{name:'desktop',use:{viewport:{width:1280,height:900}}},{name:'tablet',use:{viewport:{width:768,height:950}}},{name:'mobile',use:{viewport:{width:390,height:844}}}],webServer:{command:'python -m http.server 4832 --bind 127.0.0.1',url:'http://127.0.0.1:4832',reuseExistingServer:false}});
