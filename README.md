@@ -1,18 +1,20 @@
-# Morrow Studio — Agency Website
+# Morrow Studio — сайт цифровой студии
 
-Responsive studio presentation with project filters, navigation and a client-validated contact form.
+Адаптивный сайт студии: проекты, фильтры, услуги, навигация и контактная форма.
 
-[Open gallery](https://memorim.github.io/morrow-studio-website/)
+[Открыть проект](https://memorim.github.io/morrow-studio-website/)
 
-![Desktop composition](docs/desktop.png)
+![Компьютерная версия](docs/desktop.png)
 
-<img src="docs/mobile.png" width="320" alt="Mobile composition">
+<img src="docs/mobile.png" width="320" alt="Мобильная версия">
 
-## Implementation
+## Устройство проекта
 
-HTML, CSS and browser JavaScript; no build framework. The gallery can be served directly; no application build or secret configuration is needed. Desktop and mobile compositions are separate assets.
+HTML, CSS и JavaScript без сборщика. Фотографии сохранены в assets/photos, карточка цифрового продукта показывает макет интерфейса. Сайт можно обслуживать статическим HTTP-сервером. Сборка приложения и настройка секретов не требуются.
 
-## Local setup and checks
+## Локальный запуск и проверки
+
+Python 3.12.14, как в CI.
 
 ```bash
 node --check script.js
@@ -21,12 +23,12 @@ python .github/scripts/check_docs.py
 python -m http.server 8080 --bind 127.0.0.1
 ```
 
-Use Python 3.12.14, matching CI. Open `http://localhost:8080`. CI checks asset references and documentation; it does not certify interactive behavior inside images.
+Откройте `http://localhost:8080`. CI проверяет ссылки на файлы, наличие изображений и документацию. Макеты внутри PNG/SVG не становятся интерактивными от запуска галереи.
 
-## Scope and limits
+## Границы реализации
 
-The contact form validates locally; it does not send email or create a server enquiry. No backend or analytics is implied.
+Форма проверяет данные локально и не отправляет письма или заявки на сервер. Фильтры и навигация работают в браузере.
 
-No database, migrations or API are required for this static scope. Forms or integrations would be a separate implementation task.
+База данных, миграции и API в текущем варианте не используются.
 
-[Technical details](docs/TECHNICAL.md) · [Recorded checks](docs/VERIFICATION.md) · [Change history](CHANGELOG.md)
+[Технические сведения](docs/TECHNICAL.md) · [Выполненные проверки](docs/VERIFICATION.md) · [История изменений](CHANGELOG.md)
