@@ -1,6 +1,6 @@
 import {test,expect} from '@playwright/test';
 test('navigation works at every supported breakpoint',async({page,viewport})=>{
- await page.goto('/');if(viewport.width<=900){await page.locator('.menu-button').click();await expect(page.locator('header nav')).toBeVisible({timeout:1000});await expect(page.locator('.menu-button')).toHaveAttribute('aria-expanded','true');await page.keyboard.press('Escape');await expect(page.locator('header nav')).toBeHidden();}else await expect(page.locator('header nav')).toBeVisible();
+ await page.goto('/');const zoom=await page.evaluate(()=>Number(getComputedStyle(document.documentElement).zoom));if(viewport.width/zoom<=900){await page.locator('.menu-button').click();await expect(page.locator('header nav')).toBeVisible({timeout:1000});await expect(page.locator('.menu-button')).toHaveAttribute('aria-expanded','true');await page.keyboard.press('Escape');await expect(page.locator('header nav')).toBeHidden();}else await expect(page.locator('header nav')).toBeVisible();
  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+2)).toBe(true);
 });
 test('reduced motion disables the ticker',async({page})=>{await page.emulateMedia({reducedMotion:'reduce'});await page.goto('/');expect(await page.locator('.ticker div').evaluate(el=>getComputedStyle(el).animationName)).toBe('none');});
