@@ -16,9 +16,9 @@
   <div class="cursor-dot"></div>
   <header class="header">
     <a class="logo" href="#top">MORROW<span>®</span></a>
-    <nav><a href="#work">Работы</a><a href="#services">Услуги</a><a href="#about">О студии</a></nav>
+    <nav id="primary-navigation"><a href="#work">Работы</a><a href="#services">Услуги</a><a href="#about">О студии</a></nav>
     <a class="contact-link" href="#contact">Обсудить проект <span>↗</span></a>
-    <button class="menu-button" aria-label="Открыть меню"><span></span><span></span></button>
+    <button class="menu-button" aria-controls="primary-navigation" aria-expanded="false" aria-label="Открыть меню"><span></span><span></span></button>
   </header>
 
   <main id="top">
@@ -57,7 +57,7 @@
 
     <section class="contact" id="contact">
       <div><p class="eyebrow">Есть задача?</p><h2>Давайте сделаем<br />что-то <em>значимое.</em></h2><a href="mailto:hello@morrow.studio">hello@morrow.studio ↗</a></div>
-      <form id="contact-form"><label>Как вас зовут?<input name="name" required placeholder="Имя" /></label><label>Рабочая почта<input name="email" type="email" required placeholder="name@company.ru" /></label><label>Расскажите о задаче<textarea name="message" required rows="3" placeholder="Пара слов о продукте, сроках и ожиданиях"></textarea></label><button type="submit">Отправить заявку <span>↗</span></button><p class="form-status" role="status"></p></form>
+      <form id="contact-form"><label>Как вас зовут?<input name="name" maxlength="80" required placeholder="Имя" /></label><label>Рабочая почта<input name="email" type="email" maxlength="254" required placeholder="name@company.ru" /></label><label>Расскажите о задаче<textarea name="message" maxlength="1000" required rows="3" placeholder="Пара слов о продукте, сроках и ожиданиях"></textarea></label><button type="submit">Отправить заявку <span>↗</span></button><p class="form-status" role="status"></p></form>
     </section>
   </main>
   <footer><a class="logo" href="#top">MORROW<span>®</span></a><div><span>Telegram</span><span>Behance</span><span>LinkedIn</span></div><small>© 2026 Morrow Studio</small></footer>
