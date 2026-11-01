@@ -2,7 +2,7 @@
 
 Адаптивный сайт студии: проекты, фильтры, услуги, навигация и контактная форма.
 
-[Открыть проект](https://memorim.github.io/morrow-studio-website/)
+[Открыть сайт на Render](https://memorim-morrow.onrender.com/) · [GitHub Pages](https://memorim.github.io/morrow-studio-website/)
 
 ![Компьютерная версия](docs/desktop.png)
 
