@@ -1,27 +1,54 @@
 const filters = document.querySelectorAll('[data-filter]');
 const projects = document.querySelectorAll('[data-category]');
 
-filters.forEach((button) => {
-  button.setAttribute('aria-pressed', String(button.classList.contains('active')));
-  button.addEventListener('click', () => {
-    filters.forEach((item) => {item.classList.remove('active');item.setAttribute('aria-pressed','false');});
-    button.classList.add('active');
-    button.setAttribute('aria-pressed','true');
-    projects.forEach((project) => {
-      const visible = button.dataset.filter === 'all' || project.dataset.category === button.dataset.filter;
-      project.classList.toggle('hidden', !visible);
-    });
-  });
+function showCategory() {
+  const value = new URL(location.href).searchParams.get('category');
+  const category = [...filters].some(item => item.dataset.filter === value) ? value : 'all';
+  for (const button of filters) {
+    button.classList.toggle('active', button.dataset.filter === category);
+    button.setAttribute('aria-pressed', String(button.dataset.filter === category));
+  }
+  projects.forEach(project => project.classList.toggle('hidden', category !== 'all' && project.dataset.category !== category));
+}
+document.querySelector('.filters').addEventListener('submit', event => {
+  event.preventDefault();
+  const url = new URL(location.href);
+  url.searchParams.set('category', event.submitter.value);
+  url.hash = 'work';
+  history.pushState(null, '', url);
+  showCategory();
 });
+window.addEventListener('popstate', showCategory);
+showCategory();
 
 const form = document.querySelector('#contact-form');
 const status = form.querySelector('.form-status');
-form.addEventListener('submit', (event) => {
+let submission;
+form.addEventListener('submit', async (event) => {
   event.preventDefault();
-  const name = new FormData(form).get('name').trim();
-  if(name.length<2||new FormData(form).get('message').trim().length<5){status.textContent='Введите имя и краткое описание задачи.';return;}
-  status.textContent = `Спасибо, ${name}. Это демонстрационная форма: данные не отправлены.`;
-  form.reset();
+  const data = Object.fromEntries(new FormData(form));
+  for (const key of Object.keys(data)) data[key] = data[key].trim();
+  if(data.name.length<2||data.message.length<5){status.textContent='Введите имя и краткое описание задачи.';return;}
+  const payload = JSON.stringify(data);
+  if (submission?.payload !== payload) submission = {payload, id: crypto.randomUUID()};
+  const button = form.querySelector('button');
+  if (button.disabled) return;
+  button.disabled = true;
+  status.textContent = 'Отправляем заявку…';
+  try {
+    const base = location.hostname === 'memorim.github.io' ? 'https://memorim-morrow.onrender.com' : '';
+    const response = await fetch(base + '/api/inquiries', {
+      method: 'POST', headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({...data, id:submission.id}),
+    });
+    const result = await response.json();
+    if (!response.ok || result.id !== submission.id) throw new Error(result.error || 'Повторите отправку.');
+    status.textContent = `Спасибо, ${data.name}. Заявка принята.`;
+    if (Object.entries(data).every(([key,value]) => form.elements[key].value.trim() === value)) form.reset();
+    submission = null;
+  } catch (error) {
+    status.textContent = 'Не удалось сохранить заявку. ' + (error.message || 'Повторите отправку.');
+  } finally { button.disabled = false; }
 });
 
 const cursor = document.querySelector('.cursor-dot');
