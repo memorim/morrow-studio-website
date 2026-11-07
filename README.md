@@ -45,3 +45,5 @@ CI запускает сайт с отдельной тестовой PostgreSQL
 [Технические сведения](docs/TECHNICAL.md) · [Выполненные проверки](docs/VERIFICATION.md) · [История изменений](CHANGELOG.md)
 
 [Проверка опубликованной формы 07.11.2026](docs/LIVE_INTAKE_VERIFICATION.md).
+
+[Бесплатные уведомления о заявках](docs/FREE_NOTIFICATIONS.md).
