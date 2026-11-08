@@ -1,0 +1,20 @@
+name: Free notifications
+on:
+  schedule:
+    - cron: "*/5 * * * *"
+  workflow_dispatch:
+jobs:
+  deliver:
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    env:
+      DATABASE_URL: ${{ secrets.MORROW_DATABASE_URL }}
+      NTFY_TOPIC: ${{ secrets.MORROW_NTFY_TOPIC }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24.18.0
+          cache: pnpm
+      - run: corepack enable && pnpm install --frozen-lockfile
+      - run: node worker.js
