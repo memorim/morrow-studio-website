@@ -17,7 +17,7 @@ export function notificationWorker(db, { topic = process.env.NTFY_TOPIC, send = 
       if (!row) break;
       sent = true;
       controller = new AbortController();
-      let status;
+      let status, failure;
       try {
         const title = row.site === 'focus' ? 'Cardiologist' : row.site === 'takt' ? 'TAKT Dental' : 'Morrow Studio';
         const response = await send('https://ntfy.sh/', {
@@ -27,15 +27,19 @@ export function notificationWorker(db, { topic = process.env.NTFY_TOPIC, send = 
           body:JSON.stringify({topic,title,message:'New inquiry #'+row.id}),
         });
         await response.body?.cancel();
-        if (!response.ok) throw new Error('delivery_failed');
+        if (!response.ok) {
+          failure = `http_${response.status}`;
+          throw new Error('delivery_failed');
+        }
         const saved = await db.query(`UPDATE ${table} SET delivered_at=now(),lease_until='-infinity',lease_token=NULL,last_error=NULL WHERE id=$1 AND lease_token=$2`,[row.id,lease]);
         status = saved.rowCount === 1 ? 'delivered' : 'lease_lost';
-      } catch {
+      } catch (error) {
+        failure ??= error?.name === 'TimeoutError' ? 'timeout' : error?.name === 'AbortError' ? 'aborted' : 'transport_error';
         const delay = Math.min(3600,30000*2**(row.attempts-1)/1000);
         await db.query(`UPDATE ${table} SET next_attempt_at=now()+($3::int*interval '1 second'),lease_until='-infinity',lease_token=NULL,last_error='delivery_failed' WHERE id=$1 AND lease_token=$2`,[row.id,lease,delay]);
         status = 'retry';
       } finally { controller = undefined; }
-      onDelivery({id:row.id,status});
+      onDelivery({id:row.id,status,...(failure ? {failure} : {})});
     }
     return sent;
   }

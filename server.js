@@ -66,7 +66,11 @@ app.use((error, _req, res, _next) => {
   const code = [400, 413].includes(error.status) ? error.status : 503;
   res.status(code).json({ error: code === 503 ? 'Сервер временно недоступен.' : 'Проверьте данные формы.' });
 });
-const notifications = notificationWorker(db);
+const notifications = notificationWorker(db, {
+  onDelivery: ({status, failure}) => {
+    if (status !== 'delivered') console.error(JSON.stringify({event:'notification_delivery',status,failure}));
+  },
+});
 const server = app.listen(Number(process.env.PORT || 4832), process.env.RENDER ? '0.0.0.0' : '127.0.0.1', () => notifications.start());
 let stopping = false;
 for (const signal of ['SIGINT','SIGTERM']) process.on(signal, async () => {
