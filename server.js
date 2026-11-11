@@ -67,6 +67,7 @@ app.use((error, _req, res, _next) => {
   res.status(code).json({ error: code === 503 ? 'Сервер временно недоступен.' : 'Проверьте данные формы.' });
 });
 const notifications = notificationWorker(db, {
+  topic: process.env.MORROW_NOTIFICATION_MODE === 'scheduled' ? '' : process.env.NTFY_TOPIC,
   onDelivery: ({status, failure}) => {
     if (status !== 'delivered') console.error(JSON.stringify({event:'notification_delivery',status,failure}));
   },
