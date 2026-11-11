@@ -59,4 +59,4 @@ CI запускает сайт с отдельной тестовой PostgreSQL
 
 [Проверка доставки](docs/NOTIFICATION_VERIFICATION.md) · [Подтверждение получения владельцем](docs/PUSH_RECEIPT_CONFIRMATION.md). Инструкция настройки и повторной доставки — в [FREE_NOTIFICATIONS.md](docs/FREE_NOTIFICATIONS.md).
 
-Проверка 11.11.2026: новый запрос принят API и записан в очередь, но доставка вернула `delivery_failed`. Сквозная проверка пока не пройдена. [Подробности](docs/LIVE_INTAKE_2026_11_11.md).
+Проверка 11.11.2026: новый запрос принят API, сохранён в PostgreSQL и доставлен через GitHub Actions в ntfy. На web-сервисе включён `MORROW_NOTIFICATION_MODE=scheduled`, чтобы отправкой занимался только внешний обработчик. [Подробности](docs/LIVE_INTAKE_2026_11_11.md).
